@@ -1,4 +1,4 @@
-package com.example.pokedex;
+package com.example.pokedex.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.pokedex.R;
+import com.example.pokedex.control.MainController;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private Button catchBtn;
     private Button searchBtn;
 
+    private MainController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         nameOrIDET = findViewById(R.id.nameOrIDET);
         catchBtn = findViewById(R.id.catchBtn);
         searchBtn = findViewById(R.id.searchBtn);
+
+        controller = new MainController(this);
     }
 
     public ImageView getPokeImageIV() {
