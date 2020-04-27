@@ -4,9 +4,11 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.pokedex.R;
+import com.example.pokedex.model.Pokemon;
 import com.example.pokedex.util.Constants;
 import com.example.pokedex.util.HTTPSWebUtilDomi;
 import com.example.pokedex.view.MainActivity;
+import com.google.gson.Gson;
 
 public class MainController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener {
 
@@ -39,7 +41,9 @@ public class MainController implements View.OnClickListener, HTTPSWebUtilDomi.On
     public void onResponse(int callbackID, String response) {
         switch (callbackID){
             case Constants.SEARCH_CALLBACK:
-                Log.e(">>>",response);
+                Gson gson = new Gson();
+                Pokemon pokemon = gson.fromJson(response, Pokemon.class);
+                Log.e(">>>>>>>>>>>>>>>>>>>>>>>",""+pokemon.getForms()[0].getName());
                 break;
         }
 
